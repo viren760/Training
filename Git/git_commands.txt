@@ -1,0 +1,7 @@
+1. create the repository from github
+2. clone repository into desktop using terminal command git clone link.
+3. add the file into that clone folder using vim, nano, touch etc
+4. git add -A this means add all file to the github
+5. git commit -m "message" this will snapshot all the file in github
+6. git status means show the status part
+7. git push push to the git hub.
