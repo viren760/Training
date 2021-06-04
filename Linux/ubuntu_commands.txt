@@ -1,0 +1,45 @@
+Ubuntu is an linux distributed operating system. It is robust and free .i have using Ubuntu 20.04.2.0 LTS. latest version is Ubuntu 21.04 .
+
+
+
+                                             UBUNTU COMMAND LINES
+
+
+
+    1. ls  -> It is used for showing list in directory.   
+    2. Pwd -> It is used to show working directory .
+    3. Cd -> It is used to change the directory or move to the directory .
+    4. Tab -> it is used to autocomplete the directory name .
+    5. Mkdir-> It is used for creating a directory.
+    6. Touch -> It is used for creating a file.
+    7. Mv -> It is used for move the file into another folder.
+    8. Cp -> It is used for copy the file into another file.
+    9. Sudo -> It is the root user which has an full access of the os.
+    10. Sudo su -> It specifies super power and allow to access anything everything without any restrictions .
+    11. Sudo apt update -> It is used to update the features of ubuntu but not install it.
+    12. Sudo apt upgrade -> It is used to install the update software in os.
+    13. Rm -> It is used to remove the file and directory.
+    14. Ls -r -> In this list r stands for recursive which means it can show all the nodes of the directory except hidden ones,
+    15. ls-a -> It is used to show all the node file with hidden file also.
+    16. .filename -> It can be created a hidden file which cannot be seen in the list directory.
+    17. Clear -> It can clear the terminal but not delete it.
+    18. History -> It is used to see the used commands in history .
+    19. --------------------------To print in command line -------------------------                                                   1. echo  viren               2. printf “viren”
+    20. chmod -> It is used to set permision for user to access or not access the file.
+    21. Top -> It is used to show the memory occupy  by the application .
+    22. ps-> It is used to list running process.
+    23. Ps-a -> It shows the background process too.
+    24. Kill (PID)-> It will close the running application .
+    25. Vim -> It is an editor where we have to write anything in file. We can tap i to write anything on the vim editor .
+    26. :wq-> It is a part of vim editor where we want to save the file first then close it.
+    27. :q! -> It is also a part of vim editor where we want to close the file without saving .
+    28. Ls -l -> It is used to show the set permsion of the file .
+    29. We can install anything using sudo apt install filename .
+    30. Remove -> mv oldfilename newfilename .
+
+        USERS IN LINUX 
+
+    1. REGULAR USER -> It can be indicate by $ sign in the terminal regular user can access and excute only its own file it cannot be allowed to access other file without any permission.
+
+
+    2. ROOT USER -> It has a full access to see read write any execute delete of anyones file and data because it has the all permission to show all data . It can be indicate by sudo and # sign .  And sudo su means it has super power to access everything without any password and restrictions .
