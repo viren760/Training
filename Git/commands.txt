@@ -1,0 +1,4 @@
+1. we can create the branch using --> git branch local
+2. then we will go to that branch using --> git checkout local
+3. create the file using touch, nano, vim etc
+

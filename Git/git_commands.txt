@@ -1,0 +1,7 @@
+1. first we will create an repository in github .
+2. we will clone it into our desktop using ---> git clone link_of_repository .
+3. then we will create the file which we want to add in github we can create it using vim, nano, touch etc .
+4.then we will add this file into github using ---> git add -A (to add all the files ) .
+5. then we will check status using --> git status .
+6. then we will commit the file which means clicking the snapshot of the file using ---> git commit -m "message".
+7. last one we use to push into github using --> git push
