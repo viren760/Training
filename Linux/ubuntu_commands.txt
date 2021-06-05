@@ -36,6 +36,7 @@ Ubuntu is an linux distributed operating system. It is robust and free .i have u
     28. Ls -l -> It is used to show the set permsion of the file .
     29. We can install anything using sudo apt install filename .
     30. Remove -> mv oldfilename newfilename .
+    31. scp- secure copy paste it need to get permission first ---> scp filename hostname@ipaddress : pathof file
 
         USERS IN LINUX 
 
