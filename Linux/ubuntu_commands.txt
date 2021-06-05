@@ -18,7 +18,7 @@ Ubuntu is an linux distributed operating system. It is robust and free .i have u
     10. Sudo su -> It specifies super power and allow to access anything everything without any restrictions .
     11. Sudo apt update -> It is used to update the features of ubuntu but not install it.
     12. Sudo apt upgrade -> It is used to install the update software in os.
-    13. Rm -> It is used to remove the file and directory.
+    13. Rm -> It is used to remove the file and directory. --> rm -r name .
     14. Ls -r -> In this list r stands for recursive which means it can show all the nodes of the directory except hidden ones,
     15. ls-a -> It is used to show all the node file with hidden file also.
     16. .filename -> It can be created a hidden file which cannot be seen in the list directory.
