@@ -63,3 +63,14 @@ postgres=# SELECT * from data;
  id | password 
 ----+----------
 (0 rows)
+
+7. insert data into table
+
+postgres=# insert into data values(1,' virender');
+INSERT 0 1
+
+postgres=# SELECT * from data;
+ id | password  
+----+-----------
+  1 |  virender
+(1 row)
