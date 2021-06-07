@@ -1,7 +1,158 @@
 1. create the repository from github
-2. clone repository into desktop using terminal command git clone link.
-3. add the file into that clone folder using vim, nano, touch etc
-4. git add -A this means add all file to the github
-5. git commit -m "message" this will snapshot all the file in github
-6. git status means show the status part
-7. git push push to the git hub.
+
+2. Intialize the git repository in own machine using 
+
+viren@viren-SVE1511AENB:~$ git init
+Initialized empty Git repository in /home/viren/.git/
+
+
+3.then we have to clone repository into desktop . we can use one of the link HTTPS and SSH link
+
+viren@viren-SVE1511AENB:~$ git clone git@github.com:viren760/Training.git
+Cloning into 'Training'...
+The authenticity of host 'github.com (13.234.176.102)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,13.234.176.102' (RSA) to the list of known hosts.
+remote: Enumerating objects: 29, done.
+remote: Counting objects: 100% (29/29), done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 29 (delta 4), reused 15 (delta 0), pack-reused 0
+Receiving objects: 100% (29/29), 5.27 KiB | 1.32 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
+
+
+
+4. add the file into that clone folder using vim, nano, touch etc
+
+viren@viren-SVE1511AENB:~/Training$ vim about_git
+
+
+5. git add -A this means add all file to the github
+
+viren@viren-SVE1511AENB:~/Training$ git add -A
+
+if we add only one file than name the file after add.
+
+viren@viren-SVE1511AENB:~/Training$ git add about_git
+
+
+
+6. git commit -m "message" this will snapshot all the file in github
+
+viren@viren-SVE1511AENB:~/Training$ git commit -m "file move to the git"
+On branch global
+Your branch is up to date with 'origin/global'.
+
+nothing to commit, working tree clean
+
+
+7. git status means show the status part
+
+viren@viren-SVE1511AENB:~/Training$ git status
+On branch global
+Your branch is up to date with 'origin/global'.
+
+nothing to commit, working tree clean
+
+
+8. git push push to the git hub.
+
+viren@viren-SVE1511AENB:~/Training$ git push
+Everything up-to-date
+
+9. git log is used to see the history of commits we are using 
+
+viren@viren-SVE1511AENB:~/Training$ git log
+commit 2a1a93a4378ba407053bceb0c5f3bdedb1446b50 (HEAD -> global, origin/global, origin/HEAD)
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Mon Jun 7 14:25:35 2021 +0530
+
+    Delete about_global.txt
+
+commit 7976fd9e2048272364886969a89e0e0cceed5f4e
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Sat Jun 5 17:04:40 2021 +0530
+
+    Update ubuntu_commands.txt
+
+commit 5c7a91522a172759fcead36d5882d7c0efd718b1
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Sat Jun 5 10:10:39 2021 +0530
+
+    Update ubuntu_commands.txt
+
+commit dea3f2986261dbaae6ff29b34ec3d219678ea035
+Author: Viren760 <Virendernegi98@gmail.com>
+Date:   Fri Jun 4 18:27:52 2021 +0530
+commit 2a1a93a4378ba407053bceb0c5f3bdedb1446b50 (HEAD -> global, origin/global,
+ origin/HEAD)
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Mon Jun 7 14:25:35 2021 +0530
+
+    Delete about_global.txt
+
+commit 7976fd9e2048272364886969a89e0e0cceed5f4e
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Sat Jun 5 17:04:40 2021 +0530
+
+    Update ubuntu_commands.txt
+
+commit 5c7a91522a172759fcead36d5882d7c0efd718b1
+Author: Virender negi <58510282+viren760@users.noreply.github.com>
+Date:   Sat Jun 5 10:10:39 2021 +0530
+
+    Update ubuntu_commands.txt
+
+commit dea3f2986261dbaae6ff29b34ec3d219678ea035
+:
+
+
+
+10. for seeing all the branch we have to use git branch
+
+viren@viren-SVE1511AENB:~/Training$ git branch
+* global
+
+we have to write git branch -r for remotely access all the branch
+
+viren@viren-SVE1511AENB:~/Training$ git branch -r
+* global
+
+11. for cutting a new branch we have to use git branch name
+
+viren@viren-SVE1511AENB:~/Training$ git branch local
+viren@viren-SVE1511AENB:~/Training$ git branch
+* global
+  local
+
+12. git checkout name with the help of checkout we have to move to the other branch
+
+viren@viren-SVE1511AENB:~/Training$ git checkout  local
+Switched to branch 'local'
+
+this command will create the branch and also move it to this branch
+
+viren@viren-SVE1511AENB:~/Training$ git checkout -b local
+Switched to branch 'local'
+
+13. git merge branch_name this will merge the one branch data to another
+
+first we have to move to the branch where we have to merge it than we have to merge there 
+
+viren@viren-SVE1511AENB:~/Training$ git merge global
+Already up to date.
+
+14. git checkout filename this will help us to undo over previous data back
+
+viren@viren-SVE1511AENB:~/Training$ git checkout about_git
+
+15. git branch -d branch_name will delete the branch 
+
+viren@viren-SVE1511AENB:~/Training$ git branch -d global
+Deleted branch global (was 2a1a93a).
+
+16. git rm file_name will delete the file
+
+viren@viren-SVE1511AENB:~/Training$ git rm 1.txt
+rm 1.txt
