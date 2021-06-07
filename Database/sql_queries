@@ -74,3 +74,40 @@ postgres=# SELECT * from data;
 ----+-----------
   1 |  virender
 (1 row)
+
+insert multiple data into table
+
+postgres=# insert into data values(1,' virender'),(2,'sameer'),(3,'rizwan');
+INSERT 0 3
+postgres=# SELECT * from data;
+ id | password  
+----+-----------
+  1 |  virender
+  2 | sameer
+  3 | rizwan
+(4 rows)
+
+
+8. modify the table 
+
+postgres=# ALTER TABLE data ALTER  password type char(25);
+ALTER TABLE
+
+now password datatype change into varchar to char
+
+9. for describe table 
+
+postgres=# \d
+        List of relations
+ Schema | Name | Type  |  Owner   
+--------+------+-------+----------
+ public | data | table | postgres
+(1 row)
+
+postgres=# \d+
+                      List of relations
+ Schema | Name | Type  |  Owner   |    Size    | Description 
+--------+------+-------+----------+------------+-------------
+ public | data | table | postgres | 8192 bytes | 
+(1 row)
+
