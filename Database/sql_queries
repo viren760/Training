@@ -111,3 +111,18 @@ postgres=# \d+
  public | data | table | postgres | 8192 bytes | 
 (1 row)
 
+10. how to alter column name 
+
+postgres=# ALTER TABLE data RENAME password to name;
+\ALTER TABLE
+
+postgres=# SELECT * from data;
+ id |           name            
+----+---------------------------
+  1 |  virender                
+  1 |  virender                
+  2 | sameer                   
+  3 | rizwan                   
+(4 rows)
+
+
