@@ -27,3 +27,22 @@ smallserial              	 2 bytes	                              small autoincre
 serial                     4 bytes                                	autoincrementing integer	                             1 to 2147483647
 
 bigserial	                 8 bytes	                                large autoincrementing integer	                  1 to 9223372036854775807
+
+
+3. to show all the list of databases in the postgresql
+
+postgres=# \l
+                             List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype |   Access privileges   
+-----------+----------+----------+---------+-------+-----------------------
+ postgres  | postgres | UTF8     | en_IN   | en_IN | 
+ template0 | postgres | UTF8     | en_IN   | en_IN | =c/postgres          +
+           |          |          |         |       | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_IN   | en_IN | =c/postgres          +
+           |          |          |         |       | postgres=CTc/postgres
+(3 rows)
+
+4. create database using 
+
+postgres=# CREATE DATABASE admin;
+CREATE DATABASE
