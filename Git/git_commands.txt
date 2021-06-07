@@ -164,3 +164,6 @@ rm '1.txt'
 rm '2.txt'
 rm 'Database/PostgreSql'
 
+17. how to create SSH key
+
+viren@viren-SVE1511AENB:~/Downloads/Training$ ssh-keygen -t rsa -b 4096 -c "virendernegi98@gmail.com"
