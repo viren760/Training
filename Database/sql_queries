@@ -138,4 +138,20 @@ postgres=# select * from data;
 (2 rows)
 
 
+12. creating the schema of table
+
+postgres=# CREATE SCHEMA unknown;
+\CREATE SCHEMA
+postgres=# CREATE TABLE unknown.info (id integer, name varchar(25), address  varchar(50), mobile varchar(25));
+
+postgres=# insert into unknown.info values(1,'virender','dabua colony faridabad',9654058335);
+INSERT 0 1
+postgres=# select * from unknown.info;
+ id |   name   |        address         |   mobile   
+----+----------+------------------------+------------ 
+  1 | virender | dabua colony faridabad | 9654058335
+(1 rows)
+
+
+
 
