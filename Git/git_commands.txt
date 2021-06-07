@@ -156,3 +156,11 @@ Deleted branch global (was 2a1a93a).
 
 viren@viren-SVE1511AENB:~/Training$ git rm 1.txt
 rm 1.txt
+
+git rm -r will remove folder too
+
+viren@viren-SVE1511AENB:~/Training$ git rm -r 1.txt 2.txt Database
+rm '1.txt'
+rm '2.txt'
+rm 'Database/PostgreSql'
+
