@@ -52,3 +52,14 @@ CREATE DATABASE
 postgres=# DROP DATABASE admin;
 DROP DATABASE
 
+6. for creating a table
+
+postgres=# CREATE TABLE data (id integer, password varchar(25));
+CREATE TABLE
+
+for display table data 
+
+postgres=# SELECT * from data;
+ id | password 
+----+----------
+(0 rows)
