@@ -125,4 +125,17 @@ postgres=# SELECT * from data;
   3 | rizwan                   
 (4 rows)
 
+11. delete rows from table
+
+postgres=# DELETE from data WHERE id=1;
+DELETE 2
+
+postgres=# select * from data;
+ id |           name            
+----+---------------------------
+  2 | sameer                   
+  3 | rizwan                   
+(2 rows)
+
+
 
