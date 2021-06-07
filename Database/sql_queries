@@ -46,3 +46,9 @@ postgres=# \l
 
 postgres=# CREATE DATABASE admin;
 CREATE DATABASE
+
+5. to delete a databases using
+
+postgres=# DROP DATABASE admin;
+DROP DATABASE
+
