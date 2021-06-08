@@ -190,4 +190,12 @@ Indexes:
     "imp_pkey" PRIMARY KEY, btree (no)
 
     
+14. Subquery and nested queries  
+
+postgres=# SELECT name FROM imp WHERE address ='dabua colony';
+   name   
+----------
+ virender
+(1 row)
+
 
