@@ -153,7 +153,7 @@ postgres=# select * from data;
 
 postgres=# CREATE SCHEMA unknown;
 \CREATE SCHEMA
-postgres=# CREATE TABLE unknown.info (id integer, name varchar(25), address  varchar(50), mobile varchar(25));
+postgres=# CREATE TABLE unknown.info (id integer, name varchar(25), address  varchar(50), mobile bigint);
 
 postgres=# insert into unknown.info values(1,'virender','dabua colony faridabad',9654058335);
 INSERT 0 1
