@@ -2,6 +2,17 @@
 
   sudo apt install postgresql
   
+  Starting postgres -----
+  
+viren@viren-SVE1511AENB:~$ sudo su postgres
+postgres@viren-SVE1511AENB:/home/viren$ psql
+psql (12.7 (Ubuntu 12.7-0ubuntu0.20.04.1))
+Type "help" for help.
+
+postgres=# 
+
+  
+  
 2. Data types  :
 
 Name	                      Storage Size               	           Description	                                           Range
