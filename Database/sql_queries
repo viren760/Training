@@ -198,4 +198,37 @@ postgres=# SELECT name FROM imp WHERE address ='dabua colony';
  virender
 (1 row)
 
+15. MIN , MAX,  AVG 
+
+postgres=# insert into cars values(1,'Ferarri', 2500000),(2,'lamborghini', 2900000),(3,'swift dezire', 500000), (4,'hundayi i20', 700000), (5,'creata', 2500000);
+INSERT 0 5
+
+postgres=# SELECT * from cars;
+ id |     name     |  price  
+----+--------------+---------
+  1 | Ferarri      | 2500000
+  2 | lamborghini  | 2900000
+  3 | swift dezire | 500000
+  4 | hundayi i20  | 700000
+  5 | creata       | 2500000
+(5 rows)
+
+postgres=# SELECT  MAX(price) from cars;
+  max   
+--------
+ 700000
+(1 row)
+
+postgres=# SELECT  MIN(price) from cars;
+   min   
+---------
+ 2500000
+(1 row)
+
+postgres=# SELECT  AVG(price) from cars;
+   avg   
+---------
+ 1820000
+(1 row)
+
 
