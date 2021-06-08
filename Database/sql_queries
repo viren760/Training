@@ -263,4 +263,32 @@ postgres=# SELECT * from mobile ORDER BY price DESC;
   5 | Nokia    |  5000
 (5 rows)
 
+17. group by clause 
+
+postgres=# SELECT * from college;
+ id |   name   | course 
+----+----------+--------
+  1 | virender | BTech
+  2 | rizwan   | BTech
+  3 | sid      | Bcom
+  4 | tarun    | BCA
+  5 | raman    | BBA
+  6 | mayank   | Bsc
+  7 | Rahul    | BHM
+  8 | rahul    | Mtech
+(8 rows)
+
+
+
+postgres=# SELECT course, count(*) from college GROUP BY course;
+ course | count 
+--------+-------
+ BBA    |     1
+ BCA    |     1
+ Bcom   |     1
+ BHM    |     1
+ Bsc    |     1
+ Mtech  |     1
+ BTech  |     2
+(7 rows)
 
