@@ -151,6 +151,8 @@ postgres=# select * from data;
 
 12. creating the schema of table
 
+schema is the collection of tables .
+
 postgres=# CREATE SCHEMA unknown;
 \CREATE SCHEMA
 postgres=# CREATE TABLE unknown.info (id integer, name varchar(25), address  varchar(50), mobile bigint);
@@ -192,13 +194,15 @@ Indexes:
     
 14. Subquery and nested queries  
 
+Subquery means query under query
+
 postgres=# SELECT name FROM imp WHERE address ='dabua colony';
    name   
 ----------
  virender
 (1 row)
 
-15. MIN , MAX,  AVG 
+15. MIN finding the minimum data , MAX finding the maximum data,  AVG finding the average data 
 
 postgres=# insert into cars values(1,'Ferarri', 2500000),(2,'lamborghini', 2900000),(3,'swift dezire', 500000), (4,'hundayi i20', 700000), (5,'creata', 2500000);
 INSERT 0 5
@@ -233,6 +237,8 @@ postgres=# SELECT  AVG(price) from cars;
 
 16. Order by Ascending & Descending 
 
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+
 postgres=# SELECT * from mobile;
  id |   name   | price 
 ----+----------+-------
@@ -265,6 +271,8 @@ postgres=# SELECT * from mobile ORDER BY price DESC;
 
 17. group by clause 
 
+GROUP BY clause is used in collaboration with the SELECT statement to group together those rows in a table that have identical data. 
+
 postgres=# SELECT * from college;
  id |   name   | course 
 ----+----------+--------
@@ -292,3 +300,4 @@ postgres=# SELECT course, count(*) from college GROUP BY course;
  BTech  |     2
 (7 rows)
 
+18. 
