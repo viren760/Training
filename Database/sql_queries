@@ -300,4 +300,45 @@ postgres=# SELECT course, count(*) from college GROUP BY course;
  BTech  |     2
 (7 rows)
 
-18. 
+18. JOINS  -Joins clause is used to combine records from two or more tables in a database. A JOIN is a means for combining fields from two tables by using values common to each.
+
+ 
+ postgres=# Select * from orders;
+ order_id | customer_id | order_data | shipper_id 
+----------+-------------+------------+------------
+     1038 |           2 | 1996-09-19 |          3
+     1039 |           4 | 1996-09-20 |          1
+(2 rows)
+
+ postgres=# Select * from customers;
+
+customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+(2 rows)
+
+
+1. INNER JOIN - The INNER JOIN keyword selects records that have matching values in both tables.
+
+
+postgres=# Select orders.order_id, customers.customer_name from orders INNER JOIN customers ON orders.customer_id = customers.customer_id;
+ order_id | customer_name 
+----------+---------------
+     1038 | amazon
+     1039 | flipkart
+(2 rows)
+
+2. LEFT JOIN - The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). 
+
+postgres=# Select  customers.customer_name, orders.order_id from orders LEFT JOIN customers ON orders.customer_id = customers.customer_id ORDER BY customers.customer_name;
+
+3. RIGHT JOIN - The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). 
+
+postgres=# Select  customers.customer_name, orders.order_id from orders RIGHT JOIN customers ON orders.customer_id = customers.customer_id ORDER BY customers.customer_name;
+
+4. FULL JOIN - The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+postgres=# Select  customers.customer_name, orders.order_id from orders FULL OUTER JOIN customers ON orders.customer_id = customers.customer_id ORDER BY customers.customer_name;
+
+
