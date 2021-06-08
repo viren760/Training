@@ -164,5 +164,14 @@ postgres=# select * from unknown.info;
 (1 rows)
 
 
+13. (A) PRIMARY KEY - A primary key is a column or a group of columns used to identify a row uniquely in a table.
 
+    (B) FORIEGN KEY - A foreign key is a column or a group of columns in a table that reference the primary key of another table. It is used for joining two tables. 
+
+    (C) UNIQUE KEY - UNIQUE constraint ensures that the uniqueness of the values entered into a column or a field of a table. 
+    
+    (D) NOT NULL - NOT NULL constraint for a column to enforce a column not accept NULL .
+    
+    
+    
 
