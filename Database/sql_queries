@@ -342,3 +342,36 @@ postgres=# Select  customers.customer_name, orders.order_id from orders RIGHT JO
 postgres=# Select  customers.customer_name, orders.order_id from orders FULL OUTER JOIN customers ON orders.customer_id = customers.customer_id ORDER BY customers.customer_name;
 
 
+19. WHERE clause is used to filter data .
+
+postgres=# select * from customers WHERE country ='india';
+
+customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+(2 rows)
+
+
+20.The DISTINCT statement is used to return only distinct (different) values.
+
+postgres=# select country from customers ;
+
+ country 
+---------
+ india
+ india
+
+(2 rows)
+
+remove duplicacy
+
+postgres=# select DISTINCT country from customers;
+
+ country 
+---------
+ india
+
+
+(1 rows)
+
