@@ -173,5 +173,21 @@ postgres=# select * from unknown.info;
     (D) NOT NULL - NOT NULL constraint for a column to enforce a column not accept NULL .
     
     
+    postgres=# CREATE TABLE imp (no integer NOT NULL PRIMARY KEY , name varchar(25) NOT NULL, address varchar(50) NOT NULL, qualification varchar (25) NOT NULL);
+    
+    CREATE TABLE
+
+    postgres=# \d imp;
+                           Table "public.imp"
+    
+    Column     |         Type          | Collation | Nullable | Default 
+---------------+-----------------------+-----------+----------+---------
+ no            | integer               |           | not null | 
+ name          | character varying(25) |           | not null | 
+ address       | character varying(50) |           | not null | 
+ qualification | character varying(25) |           | not null | 
+Indexes:
+    "imp_pkey" PRIMARY KEY, btree (no)
+
     
 
