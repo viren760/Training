@@ -58,10 +58,40 @@ postgres=# \l
 postgres=# CREATE DATABASE admin;
 CREATE DATABASE
 
+
+
+
 5. to delete a databases using
 
 postgres=# DROP DATABASE admin;
 DROP DATABASE
+
+delete command --
+
+      
+    customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik             | faridabad |      121001 | india
+(6 rows)
+
+postgres=# delete from customers WHERE contact_name ='virender';
+DELETE 1
+
+postgres=# select * from customers;
+ customer_id | customer_name | contact_name |     address     |   city    | postal_code | country 
+-------------+---------------+--------------+-----------------+-----------+-------------+---------
+           4 | flipkart      | rijwan       | sgm nagar sec48 | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23          | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua           | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23          | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik          | faridabad |      121001 | india
+(5 rows)
+
 
 6. for creating a table
 
@@ -580,4 +610,66 @@ ostgres=# select * from customers WHERE country='australia' OR address='sainik';
            6 | amazon        | raman        | sainik  | faridabad |      121001 | india
 (1 row)
 
-27.
+not means not true 
+
+* find the data of customer whose adress is not sainik.
+
+postgres=# select * from customers WHERE  NOT address='sainik';
+
+customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+(5 rows)
+
+
+27.  UNIONS -
+
+TABLE 1
+
+postgres=# select * from college;
+ id |   name   | course 
+----+----------+--------
+  1 | virender | BTech
+  2 | rizwan   | BTech
+  3 | sid      | Bcom
+  4 | tarun    | BCA
+  5 | raman    | BBA
+  6 | mayank   | Bsc
+  7 | Rahul    | BHM
+  8 | rahul    | Mtech
+(8 rows)
+
+TABLE 2
+
+postgres=# select * from students;
+ id |   name    |   address   
+----+-----------+-------------
+  1 | shubham   | dabua
+  1 | shivanshu | old
+  3 | shivam    | sgm
+  4 | anurag    | patel chowk
+  5 | vikas     | singapore
+(5 rows)
+
+postgres=# select name from college UNION select name from students ORDER by name;
+   name    
+-----------
+ anurag
+ mayank
+ rahul
+ Rahul
+ raman
+ rizwan
+ shivam
+ shivanshu
+ shubham
+ sid
+ tarun
+ vikas
+ virender
+(13 rows)
+
