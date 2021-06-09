@@ -449,3 +449,135 @@ postgres=# select contact_name from customers WHERE contact_name like '______';
 
 
 22. The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+    postgres=# select * from customers;
+         
+    customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik             | faridabad |      121001 | india
+(6 rows)
+
+
+* finding out the customer_id  less then 5 and arrange in ascending order.
+
+postgres=# select customer_id from customers GROUP BY customer_id HAVING customer_id <5 ORDER BY customer_id ASC;
+ customer_id 
+-------------
+           2
+           3
+           4
+(3 rows)
+
+23. The IN operator allows you to specify multiple values in a WHERE clause.
+
+
+    postgres=# select * from customers;
+         
+    customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik             | faridabad |      121001 | india
+(6 rows)
+
+* findout the person name whose address is SEC-23, sainik.
+postgres=# select contact_name from customers WHERE address IN ('Sec-23','sainik');
+ contact_name 
+--------------
+ parnav
+ rajan
+ raman
+(3 rows)
+
+
+* findout the person name with any adress except SEC-23, sainik     (NOT IN)
+
+postgres=# select contact_name from customers WHERE address NOT IN ('Sec-23','sainik');
+ contact_name 
+--------------
+ virender
+ rijwan
+ gaurav
+(3 rows)
+
+24. The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+postgres=# select * from mobile;
+ id |   name   | price 
+----+----------+-------
+  1 | Xiamomi  | 10000
+  2 | Apple    | 60000
+  3 | samsung  | 30000
+  4 | Motorola | 20000
+  5 | Nokia    |  5000
+(5 rows)
+
+
+postgres=# select name from mobile WHERE price  BETWEEN 5000 AND 50000;
+   name   
+----------
+ Xiamomi
+ samsung
+ Motorola
+ Nokia
+(4 rows)
+
+25. An alias is created with the AS keyword.
+
+postgres=# select id AS ID, name AS NAME from mobile;
+ id |   name   
+----+----------
+  1 | Xiamomi
+  2 | Apple
+  3 | samsung
+  4 | Motorola
+  5 | Nokia
+(5 rows)
+
+
+in this ID , NAME is alias.
+
+26. The AND and OR operators are used to filter records based on more than one condition:
+
+(A) The AND operator displays a record if all the conditions separated by AND are TRUE.
+(B) The OR operator displays a record if any of the conditions separated by OR is TRUE.
+
+
+    postgres=# select * from customers;
+         
+    customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik             | faridabad |      121001 | india
+(6 rows)
+
+if both are true than u will use this if one of them is false  then it will not show any record .
+
+postgres=# select * from customers WHERE country='india' AND address='Sec-23';
+ customer_id | customer_name | contact_name | address |   city    | postal_code | country 
+-------------+---------------+--------------+---------+-----------+-------------+---------
+           3 | flipkart      | parnav       | Sec-23  | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23  | faridabad |      121001 | india
+(2 rows)
+
+if we use Or operand soo if one of the condition is true it will show result related to matching one.
+
+ostgres=# select * from customers WHERE country='australia' OR address='sainik';
+ customer_id | customer_name | contact_name | address |   city    | postal_code | country 
+-------------+---------------+--------------+---------+-----------+-------------+---------
+           6 | amazon        | raman        | sainik  | faridabad |      121001 | india
+(1 row)
+
+27.
