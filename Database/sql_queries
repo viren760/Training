@@ -375,3 +375,77 @@ postgres=# select DISTINCT country from customers;
 
 (1 rows)
 
+21. The LIKE operator is used to match text values against a pattern using wildcards. 
+   
+    There are two wildcards used in conjunction with the LIKE operator −
+
+    (1) The percent sign (%)   The percent sign represents zero, one, or multiple numbers or characters. 
+    (2) The underscore (_)     The underscore represents a single number or character. 
+       
+    postgres=# select * from customers;
+         
+    customer_id | customer_name | contact_name |      address       |   city    | postal_code | country 
+-------------+---------------+--------------+--------------------+-----------+-------------+---------
+           2 | amazon        | virender     | D944 dabua colony  | faridabad |      121001 | india
+           4 | flipkart      | rijwan       | sgm nagar sec48    | faridabad |      121001 | india
+           3 | flipkart      | parnav       | Sec-23             | faridabad |      121001 | india
+           4 | amazon        | gaurav       | dabua              | faridabad |      121001 | india
+           5 | flipkart      | rajan        | Sec-23             | faridabad |      121001 | india
+           6 | amazon        | raman        | sainik             | faridabad |      121001 | india
+(6 rows)
+
+(A) if we want to findout student name with first letter , middle letter and last letter so we can use '%'.
+  
+* find student name through last letter .
+
+postgres=# select contact_name from customers WHERE contact_name like '%v';
+
+contact_name 
+--------------
+ parnav
+ gaurav
+(2 rows)
+
+* find student name through first letter .
+
+postgres=# select contact_name from customers WHERE contact_name like 'r%';
+ contact_name 
+--------------
+ rijwan
+ rajan
+ raman
+(3 rows)
+
+* find student name through middle letter .
+
+postgres=# select contact_name from customers WHERE contact_name like '%j%';
+ contact_name 
+--------------
+ rijwan
+ rajan
+(2 rows)
+
+
+(B) if we want to findout exact 4 letter and five letter student name we use '_' .
+
+* find student name having 4 letter in their name.
+
+postgres=# select contact_name from customers WHERE contact_name like '_____';
+ contact_name 
+--------------
+ rajan
+ raman
+(2 rows)
+
+* find student name having 5 letter in their name.
+
+postgres=# select contact_name from customers WHERE contact_name like '______';
+ contact_name 
+--------------
+ rijwan
+ parnav
+ gaurav
+(3 rows)
+
+
+22. The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
