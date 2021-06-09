@@ -673,3 +673,60 @@ postgres=# select name from college UNION select name from students ORDER by nam
  virender
 (13 rows)
 
+
+28. CROSS JOIN - A CROSS JOIN is a JOIN operation that produces the Cartesian product of two tables.
+
+postgres=# select * from student_table;
+ id |     name      | age 
+----+---------------+-----
+  1 | ram kumar     |  19
+  2 | salman khan   |  18
+  3 | meera khan    |  19
+  4 | sarita kumari |  21
+(4 rows)
+
+postgres=# select * from city_table;
+ cid |  city  
+-----+--------
+   1 | agra
+   2 | bhopal
+   3 | delhi
+(3 rows)
+
+
+postgres=# select student_table.id, student_table.name, student_table.age, city_table.city from student_table CROSS JOIN city_table;
+ id |     name      | age |  city  
+----+---------------+-----+--------
+  1 | ram kumar     |  19 | agra
+  2 | salman khan   |  18 | agra
+  3 | meera khan    |  19 | agra
+  4 | sarita kumari |  21 | agra
+  1 | ram kumar     |  19 | bhopal
+  2 | salman khan   |  18 | bhopal
+  3 | meera khan    |  19 | bhopal
+  4 | sarita kumari |  21 | bhopal
+  1 | ram kumar     |  19 | delhi
+  2 | salman khan   |  18 | delhi
+  3 | meera khan    |  19 | delhi
+  4 | sarita kumari |  21 | delhi
+(12 rows)
+
+
+29. SELF JOIN - A self join is a regular join, but the table is joined with itself.
+
+
+postgres=# select * from employee;
+ e_id |   name   | m_id 
+------+----------+------
+    1 | virender |    3
+    2 | rijwan   |    2
+    3 | rahul    |    1
+(3 rows)
+
+postgres=#  select e.name AS employee , m.name AS manager from employee e, employee m WHERE e.m_id = m.e_id;
+ employee | manager  
+----------+----------
+ virender | rahul
+ rijwan   | rijwan
+ rahul    | virender
+(3 rows)
