@@ -59,3 +59,11 @@ postgres=# select * from Employees;
  1010 | rijwan | 160000
 (10 rows)
 
+
+
+(A) postgres=# select Aircraft,aname from Aircraft INNER JOIN Certified ON Aircraft.aid = Certified.aid INNER JOIN Employees ON Certified.eid = Employees.eid WHERE Employees.salary <80000;
+    aircraft     | aname  
+-----------------+--------
+ (8,Boeing,1000) | Boeing
+(1 row)
+
