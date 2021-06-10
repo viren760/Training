@@ -1,0 +1,61 @@
+postgres=# select * from flights;
+ flno |    ffrom    |     fto     | distance | departs  | arrives  | price 
+------+-------------+-------------+----------+----------+----------+-------
+    1 | Delhi       | Malaysia    |     3439 | 05:00:00 | 09:24:00 | 50000
+    2 | Malaysia    | Los Angeles |    13000 | 11:10:25 | 23:00:10 | 90500
+    3 | Los Angeles | Honolulu    |     2500 | 23:30:00 | 02:00:05 | 45000
+    4 | Los Angeles | Honolulu    |     2500 | 04:00:20 | 06:10:05 | 65000
+    5 | los Angeles | Chicago     |     2300 | 01:10:00 | 03:00:00 | 50000
+    6 | los Angeles | Chicago     |     2300 | 00:10:00 | 01:50:00 | 40000
+    7 | los Angeles | Chicago     |     2300 | 05:10:00 | 06:50:00 | 50500
+    8 | Madison     | New York    |        3 | 17:49:00 | 18:00:00 |   600
+    9 | New York    | Canada      |     7000 | 21:00:00 | 00:10:25 | 30000
+   10 | Canada      | delhi       |    18000 | 15:10:00 | 22:00:20 | 80000
+(10 rows)
+
+postgres=# select * from Aircraft;
+ aid |    aname    | cruisingrange 
+-----+-------------+---------------
+   1 | Emirates    |          4000
+   2 | Emirates    |         14000
+   3 | Emirates    |          3000
+   4 | Boeing      |          3000
+   5 | Qatar       |          2500
+   6 | Boeing      |          3000
+   7 | Emirates    |          5000
+   8 | Boeing      |          1000
+   9 | Malindo Air |         10000
+  10 | Qatar       |         20000
+(10 rows)
+
+                      
+postgres=# select * from Certified;
+ eid  | aid 
+------+-----
+ 1001 |   1
+ 1002 |   2
+ 1003 |   3
+ 1004 |   4
+ 1005 |   5
+ 1006 |   6
+ 1007 |   7
+ 1008 |   8
+ 1009 |   9
+ 1010 |  10
+(10 rows)
+
+postgres=# select * from Employees;
+ eid  | ename  | salary 
+------+--------+--------
+ 1001 | viren  | 120000
+ 1002 | rijwan | 180000
+ 1003 | parnav | 100000
+ 1004 | rijwan | 140000
+ 1005 | viren  | 115000
+ 1006 | parnav | 105000
+ 1007 | raman  | 110000
+ 1008 | parnav |  50000
+ 1009 | parnav |  90000
+ 1010 | rijwan | 160000
+(10 rows)
+
