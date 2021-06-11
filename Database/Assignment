@@ -1,3 +1,6 @@
+
+--------------------------- FLights------------------------
+
 postgres=# select * from flights;
  flno |    ffrom    |     fto     | distance | departs  | arrives  | price 
 ------+-------------+-------------+----------+----------+----------+-------
@@ -15,6 +18,8 @@ postgres=# select * from flights;
 (11 rows)
 
 
+---------------------------Aircrafts--------------------------------------
+
 postgres=# select * from Aircraft;
  aid |    aname    | cruisingrange 
 -----+-------------+---------------
@@ -31,7 +36,7 @@ postgres=# select * from Aircraft;
   11 | Emirates    |          1000
 (11 rows)
 
-
+--------------------------------Certified----------------------------------------
                       
 postgres=# select * from Certified;
  eid  | aid 
@@ -39,17 +44,19 @@ postgres=# select * from Certified;
  1001 |   1
  1002 |   2
  1003 |   3
- 1004 |   4
- 1005 |   5
- 1006 |   6
- 1007 |   7
- 1008 |   8
- 1009 |   9
- 1010 |  10
- 1011 |  11
-(11 rows)
+ 1002 |   4
+ 1001 |   5
+ 1003 |   6
+ 1004 |   7
+ 1003 |   8
+ 1002 |   9
+ 1003 |  10
+ 1005 |  11
+ 1002 |  12
+ 1001 |  13
+(13rows)
 
-
+--------------------------------Employees----------------------------------------------
 
 postgres=# select * from Employees;
  eid  | ename  | salary 
@@ -57,15 +64,17 @@ postgres=# select * from Employees;
  1001 | viren  | 120000
  1002 | rijwan | 180000
  1003 | parnav | 100000
- 1004 | rijwan | 140000
- 1005 | viren  | 115000
- 1006 | parnav | 105000
- 1007 | raman  | 110000
- 1009 | parnav |  90000
- 1010 | rijwan | 160000
- 1008 | parnav |  40000
- 1011 | raju   |  45000
-(11 rows)
+ 1002| rijwan  | 140000     
+ 1001| viren   | 115000
+ 1003| parnav  | 105000
+ 1004| raman   | 110000
+ 1003| parnav  | 90000
+ 1002 |rijwan  | 160000
+ 1003| parnav  | 40000
+ 1005|raju     | 45000
+ 1002| rijwan  | 20000
+ 1001| viren   | 25000
+(13 rows)
 
 
 
@@ -77,6 +86,15 @@ postgres=# select * from Employees;
  Boeing
 (1 row)
 
+(B)  select max(Aircraft.cruisingrange) AS "maximum range", Certified.eid from Aircraft INNER JOIN  Certified ON Aircraft.aid= Certified.aid Group BY Certified.eid HAVING count(Certified.eid)>3;
+  
+    maximum range | eid 
+---------------+-----
+    120000        |1001
+    180000        |1002
+(2rows)
+
+  
 
 (C) postgres=# select Employees.ename from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid WHERE Employees.salary < 45000;
  ename  
@@ -118,7 +136,56 @@ postgres=# select * from Employees;
  New York | Canada
 (2 rows)
 
-*(H) postgres=# select Employees.ename  from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Certified.aid WHERE NOT Aircraft.aname ='Boeing' AND Aircraft.cruisingrange <3000;
+(H) postgres=# select Employees.ename from Employees  INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid WHERE Aircraft.aname NOT LIke 'Boeing%' AND Aircraft.cruisingrange >3000;
+ ename  
+--------
+ viren
+ rijwan
+ raman
+ parnav
+ rijwan
+(5 rows)
+
+(I) postgres=# select flights.departs from flights WHERE ffrom='Madison' AND fto='New York' AND arrives ='18:00:00';
+ departs  
+----------
+ 17:49:00
+(1 row)
+ 
+(J) postgres=# select AVG(salary) AS "employee avg"  from Employees;
+         avg         
+---------------------
+ 109545.454545454545
+(1 row)
+ 
+postgres=# select AVG(salary) As "pilot avg" from Employees INNER JOIN Certified ON Employees.eid = Certified.eid;
+         avg         
+---------------------
+ 109545.454545454545
+(1 row)
+
+both of the employees and pilots have same all the employees are certified
+
+postgres=# select ((select AVG(Employees.salary) from Employees INNER JOIN Certified ON Employees.eid= Certified.eid)-(select AVG(salary) from Employees )) AS "difrence between pilot and employee";
+ difrence between pilot and employee 
+-------------------------------------
+                      0.000000000000
+
+ 
+(K) postgres=# Select Employees.ename, Employees.salary from Employees INNER JOIN Certified ON Employees.eid = Certified.eid WHERE Employees.salary >(select avg(salary) from Employees);
+ ename  | salary 
+--------+--------
+ viren  | 120000
+ rijwan | 180000
+ rijwan | 140000
+ viren  | 115000
+ raman  | 110000
+ rijwan | 160000
+(6 rows)
+
+
+
+(L) postgres=# select Employees.ename from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid  WHERE Aircraft.cruisingrange >1000 ;
  ename  
 --------
  viren
@@ -129,28 +196,22 @@ postgres=# select * from Employees;
  parnav
  raman
  parnav
+ rijwan
+(9 rows)
+
+(M) select DISTINCT(Employees.ename) from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON  Certified.aid = Aircraft.aid WHERE Aircraft.cruisingrange >1000 GROUP BY Employees.ename HAVING Count(Aircraft.cruisingrange)>1;
+ ename  
+--------
  parnav
  rijwan
- raju
-(11 rows)
+ viren
+(3 rows)
 
-(I) postgres=# select flights.departs from flights WHERE ffrom='Madison' AND fto='New York' AND arrives ='18:00:00';
- departs  
-----------
- 17:49:00
-(1 row)
- 
-(J) postgres=# select AVG(salary) from Employees;
-         avg         
----------------------
- 109545.454545454545
-(1 row)
- 
-postgres=# select AVG(salary) from Employees AS Pilots;
-         avg         
----------------------
- 109545.454545454545
-(1 row)
- 
-(K) 
+
+(N) postgres=# select Employees.ename from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid  WHERE Aircraft.cruisingrange >1000 AND Aircraft.aname='Boeing';
+ ename  
+--------
+ rijwan
+ parnav
+(2 rows)
 
