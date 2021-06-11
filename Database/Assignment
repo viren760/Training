@@ -11,7 +11,9 @@ postgres=# select * from flights;
     8 | Madison     | New York    |        3 | 17:49:00 | 18:00:00 |   600
     9 | New York    | Canada      |     7000 | 21:00:00 | 00:10:25 | 30000
    10 | Canada      | delhi       |    18000 | 15:10:00 | 22:00:20 | 80000
-(10 rows)
+   11 | Madison     | New York    |        3 | 23:15:00 | 23:35:15 |   800
+(11 rows)
+
 
 postgres=# select * from Aircraft;
  aid |    aname    | cruisingrange 
@@ -26,7 +28,9 @@ postgres=# select * from Aircraft;
    8 | Boeing      |          1000
    9 | Malindo Air |         10000
   10 | Qatar       |         20000
-(10 rows)
+  11 | Emirates    |          1000
+(11 rows)
+
 
                       
 postgres=# select * from Certified;
@@ -42,7 +46,10 @@ postgres=# select * from Certified;
  1008 |   8
  1009 |   9
  1010 |  10
-(10 rows)
+ 1011 |  11
+(11 rows)
+
+
 
 postgres=# select * from Employees;
  eid  | ename  | salary 
@@ -57,7 +64,9 @@ postgres=# select * from Employees;
  1009 | parnav |  90000
  1010 | rijwan | 160000
  1008 | parnav |  40000
-(10 rows)
+ 1011 | raju   |  45000
+(11 rows)
+
 
 
 
@@ -74,4 +83,74 @@ postgres=# select * from Employees;
 --------
  parnav
 (1 row)
+
+(D) postgres=# select Aircraft.aname, AVG(salary) from Employees INNER JOIN Certified ON Employees.eid= Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid WHERE cruisingrange >1000 GROUP BY Aircraft.aname;
+    aname    |         avg         
+-------------+---------------------
+ Malindo Air |  90000.000000000000
+ Qatar       | 137500.000000000000
+ Emirates    | 127500.000000000000
+ Boeing      | 122500.000000000000
+(4 rows)
+
+
+(E) postgres=# select Employees.ename from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid WHERE Aircraft.aname = 'Boeing';
+ ename  
+--------
+ rijwan
+ parnav
+ parnav
+(3 rows)
+
+
+(F) postgres=# select Aircraft.aid from Aircraft INNER JOIN flights ON Aircraft.aid= flights.flno  WHERE ffrom ='los Angeles' AND  fto='Chicago'; 
+ aid 
+-----
+   5
+   6
+   7
+(3 rows)
+
+(G) postgres=# select flights.ffrom ,flights.fto from flights INNER JOIN Aircraft ON flights.flno= Aircraft.aid INNER JOIN Certified ON Aircraft.aid = Certified.aid INNER JOIN  Employees ON Certified.eid = Employees.eid WHERE Employees.salary <100000;
+  ffrom   |   fto    
+----------+----------
+ Madison  | New York
+ New York | Canada
+(2 rows)
+
+*(H) postgres=# select Employees.ename  from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Certified.aid WHERE NOT Aircraft.aname ='Boeing' AND Aircraft.cruisingrange <3000;
+ ename  
+--------
+ viren
+ rijwan
+ parnav
+ rijwan
+ viren
+ parnav
+ raman
+ parnav
+ parnav
+ rijwan
+ raju
+(11 rows)
+
+(I) postgres=# select flights.departs from flights WHERE ffrom='Madison' AND fto='New York' AND arrives ='18:00:00';
+ departs  
+----------
+ 17:49:00
+(1 row)
+ 
+(J) postgres=# select AVG(salary) from Employees;
+         avg         
+---------------------
+ 109545.454545454545
+(1 row)
+ 
+postgres=# select AVG(salary) from Employees AS Pilots;
+         avg         
+---------------------
+ 109545.454545454545
+(1 row)
+ 
+(K) 
 
