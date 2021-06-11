@@ -54,16 +54,24 @@ postgres=# select * from Employees;
  1005 | viren  | 115000
  1006 | parnav | 105000
  1007 | raman  | 110000
- 1008 | parnav |  50000
  1009 | parnav |  90000
  1010 | rijwan | 160000
+ 1008 | parnav |  40000
 (10 rows)
 
 
 
-(A) postgres=# select Aircraft,aname from Aircraft INNER JOIN Certified ON Aircraft.aid = Certified.aid INNER JOIN Employees ON Certified.eid = Employees.eid WHERE Employees.salary <80000;
-    aircraft     | aname  
------------------+--------
- (8,Boeing,1000) | Boeing
+(A) postgres=# select Aircraft.aname from Aircraft INNER JOIN Certified ON Aircraft.aid = Certified.aid INNER JOIN Employees ON Certified.eid = Employees.eid WHERE Employees.salary <80000;
+
+ aname  
+--------
+ Boeing
+(1 row)
+
+
+(C) postgres=# select Employees.ename from Employees INNER JOIN Certified ON Employees.eid = Certified.eid INNER JOIN Aircraft ON Certified.aid = Aircraft.aid WHERE Employees.salary < 45000;
+ ename  
+--------
+ parnav
 (1 row)
 
