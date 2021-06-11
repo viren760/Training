@@ -47,11 +47,11 @@ postgres=# select * from Certified;
  1002 |   4
  1001 |   5
  1003 |   6
- 1004 |   7
+ 1006 |   7
  1003 |   8
  1002 |   9
  1003 |  10
- 1005 |  11
+ 1007 |  11
  1002 |  12
  1001 |  13
 (13rows)
@@ -152,26 +152,13 @@ postgres=# select * from Employees;
  17:49:00
 (1 row)
  
-(J) postgres=# select AVG(salary) AS "employee avg"  from Employees;
-         avg         
----------------------
- 109545.454545454545
-(1 row)
- 
-postgres=# select AVG(salary) As "pilot avg" from Employees INNER JOIN Certified ON Employees.eid = Certified.eid;
-         avg         
----------------------
- 109545.454545454545
-(1 row)
-
-both of the employees and pilots have same all the employees are certified
-
-postgres=# select ((select AVG(Employees.salary) from Employees INNER JOIN Certified ON Employees.eid= Certified.eid)-(select AVG(salary) from Employees )) AS "difrence between pilot and employee";
+(J) postgres=# select ((select AVG(salary) from Employees )-(select AVG(Employees.salary) from Employees INNER JOIN Certified ON Employees.eid= Certified.eid)) AS "difrence between pilot and employee";
  difrence between pilot and employee 
 -------------------------------------
-                      0.000000000000
+                  53146.853146853147
+(1 row)
 
- 
+
 (K) postgres=# Select Employees.ename, Employees.salary from Employees INNER JOIN Certified ON Employees.eid = Certified.eid WHERE Employees.salary >(select avg(salary) from Employees);
  ename  | salary 
 --------+--------
